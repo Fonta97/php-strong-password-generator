@@ -14,22 +14,45 @@
 <?php
 
 $pws_lng = $_GET["pws_lng"] ?? -1;
-
 echo "lng: " . $pws_lng;
 
-echo "<br>";
+echo "<br></br>";
 
-$c='A':
-$c_ascii = ord($c);
-$c_char = chr($c_ascii);
+$charSet ="";
+for ($x=ord('a');x<=ord('z');$x++) {
 
-echo $c;
-echo "<br>";
-echo $c_ascii;
-echo "<br>";
-echo $c_char;
+    $charSet .= chr($x);
+}
+
+for ($x=ord('A');$x<=ord('Z');$x++) {
+    $charSet .= chr($x);
+}
+
+for ($x=ord('0');x<=ord('z');$x++) {
+
+    $charSet .= chr($x);
+}
+
+for ($x=ord('!');$x<=ord('Z');$x++) {
+    $charSet .= chr($x);
+}
+
+echo $charSet;
+
+$pws="";
+for ($x=0;$x<$pws_lng;$x++){
+
+    $rndCharIndex = rand(0, strlen($charSet)-1);
+    $rndChar = $charSet[$rndCharIndex];
+    $pws .=$rndChar;
+}
 
 ?>
+
+<h2 style="color: red;">
+La tua password è:
+<?php echo $pws; ?>
+</h2>
 
 </body>
 </html>
